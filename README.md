@@ -5,6 +5,31 @@ Built with [LangChain](https://github.com/hwchase17/langchain), [GPT4All](https:
 
 <img width="902" alt="demo" src="https://user-images.githubusercontent.com/721666/236942256-985801c9-25b9-48ef-80be-3acbb4575164.png">
 
+# Environment Setup (GCP)
+1. Ensure your files are in the folder source_documents
+2. 
+```shell
+conda create -n python310 python=3.10
+conda activate python310
+pip install -r requirements.txt
+```
+3.
+```shell
+python ingest.py
+```
+4.
+```shell
+python privateGPT.py
+```
+
+## Performance Testing (GCP)
+- 52GB RAM, 8vCPU -> 100s
+- 52GB RAM, 8vCPU, NVIDIA P4 -> 100s (GPU unutilized)
+- 104GB RAM, 16vCPU -> 85.01s
+- 208GB RAM, 32vCPU, 16 threads -> 38s
+- 208GB RAM, 32vCPU, 32 threads -> 60s (?)
+
+
 # Environment Setup
 In order to set your environment up to run the code here, first install all requirements:
 
@@ -22,6 +47,7 @@ poetry install
 poetry shell
 ```
 
+# Setup continuation and running the code
 Then, download the LLM model and place it in a directory of your choice:
 - LLM: default to [ggml-gpt4all-j-v1.3-groovy.bin](https://gpt4all.io/models/ggml-gpt4all-j-v1.3-groovy.bin). If you prefer a different GPT4All-J compatible model, just download it and reference it in your `.env` file.
 

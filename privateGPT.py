@@ -33,9 +33,9 @@ def main():
     # Prepare the LLM
     match model_type:
         case "LlamaCpp":
-            llm = LlamaCpp(model_path=model_path, n_ctx=model_n_ctx, n_batch=model_n_batch, callbacks=callbacks, verbose=False)
+            llm = LlamaCpp(model_path=model_path, n_ctx=model_n_ctx, n_batch=model_n_batch, callbacks=callbacks, verbose=False, n_threads=32)
         case "GPT4All":
-            llm = GPT4All(model=model_path, backend='gptj', n_batch=model_n_batch, callbacks=callbacks, verbose=False) #n_ctx=model_n_ctx,
+            llm = GPT4All(model=model_path, backend='gptj', n_batch=model_n_batch, callbacks=callbacks, verbose=False, n_threads=32) #n_ctx=model_n_ctx,
         case _default:
             # raise exception if model_type is not supported
             raise Exception(f"Model type {model_type} is not supported. Please choose one of the following: LlamaCpp, GPT4All")
